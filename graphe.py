@@ -3,12 +3,17 @@ import numpy as np
 
 
 ##############################
-####### H2 and O2 Data #######
+####### Volume Evolution #######
 ##############################
 
-time_graph1 = np.array([0.0, 0.5, 1.0, 1.5, 2.0, 2.5])
-Volume_of_H2_graph1 = np.array([0.0, 0.0, 0.0, 0.0, 0.0, 0.0])
-Volume_of_O2_graph1 = np.array([0.0, 0.0, 0.0, 0.0, 0.0, 0.0])
+time_graph1 = np.array([0.0, 0.5, 1.0, 1.5, 2.0, 2.5]) # in seconds
+volume_of_H2_graph1 = np.array([0.0, 0.0, 0.0, 0.0, 0.0, 0.0]) # ml
+volume_of_O2_graph1 = np.array([0.0, 0.0, 0.0, 0.0, 0.0, 0.0]) # ml
+speed_of_production_of_H2 = np.array([0.0, 0.0, 0.0, 0.0, 0.0, 0.0]) # ml/s
+speed_of_production_of_O2 = np.array([0.0, 0.0, 0.0, 0.0, 0.0, 0.0]) # ml/s
+for i in range(time_graph1.size):
+    speed_of_production_of_H2[i] = volume_of_H2_graph1[i] / time_graph1[i]
+    speed_of_production_of_O2[i] = volume_of_O2_graph1[i] / time_graph1[i]
 
 ###############################
 ### Faradic Efficiency Data ###
