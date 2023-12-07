@@ -7,8 +7,8 @@ import numpy as np
 ##############################
 
 time_graph1 = np.array([0.0, 0.5, 1.0, 1.5, 2.0, 2.5])
-Volume_of_H2 = np.array([0.0, 0.0, 0.0, 0.0, 0.0, 0.0])
-Volume_of_O2 = np.array([0.0, 0.0, 0.0, 0.0, 0.0, 0.0])
+Volume_of_H2_graph1 = np.array([0.0, 0.0, 0.0, 0.0, 0.0, 0.0])
+Volume_of_O2_graph1 = np.array([0.0, 0.0, 0.0, 0.0, 0.0, 0.0])
 
 ###############################
 ### Faradic Efficiency Data ###
@@ -16,8 +16,8 @@ Volume_of_O2 = np.array([0.0, 0.0, 0.0, 0.0, 0.0, 0.0])
 # Formula: Faradic Efficiency = (Real speed of production) / (Theoretical speed of production) * 100
 
 time_graph2 = np.array([0.0, 0.5, 1.0, 1.5, 2.0, 2.5])
-theoretical_speed_of_production = np.array([0.0, 0.0, 0.0, 0.0, 0.0, 0.0])
-real_speed_of_production = np.array([0.0, 0.0, 0.0, 0.0, 0.0, 0.0])
+theoretical_speed_of_production = np.array([1.0, 1.0, 1.0, 1.0, 1.0, 1.0])
+real_speed_of_production = np.array([1.0, 1.0, 1.0, 1.0, 1.0, 1.0])
 faradic_efficiency = (real_speed_of_production / theoretical_speed_of_production) * 100
 
 
@@ -25,19 +25,21 @@ faradic_efficiency = (real_speed_of_production / theoretical_speed_of_production
 ### Energy Efficiency Data ###
 ##############################
 
-# Formula : Energy Efficiency = 
+# Formula: Energy Efficiency = (Energy of reaction) / (Electrical Consumption) * 100
 
 # 1) Electrical Consumption 
-Voltage = 0.0 # in volts
-Current = 0.0 # in amperes
-time_of_consumption = 0.0 # in seconds
-Electrical_Consumption = Voltage * Current * time_of_consumption # in joules
+voltage_evolution = np.array([0.0, 0.0, 0.0, 0.0, 0.0, 0.0]) # in volts
+current_evolution = np.array([0.0, 0.0, 0.0, 0.0, 0.0, 0.0]) # in amperes
+time_consumption = np.array([0.0, 0.5, 1.0, 1.5, 2.0, 2.5]) # in seconds
+Electrical_Consumption = np.array([0.0, 0.0, 0.0, 0.0, 0.0, 0.0]) # in watts
+for i in range(voltage_evolution.size):
+    Electrical_Consumption[i] = voltage_evolution[i] * current_evolution[i] * time_consumption[i]
 
 # 2) Number of moles of gaz produced
-Volume_of_H2 = 0.0 # in m3
-Volume_of_O2 = 0.0 # in m3
-number_of_moles_of_H2 = Volume_of_H2 / 22.4 # in moles
-number_of_moles_of_O2 = Volume_of_O2 / 22.4 # in moles
+Volume_of_H2_graph2 = 0.0 # in m3
+Volume_of_O2_graph2 = 0.0 # in m3
+number_of_moles_of_H2 = Volume_of_H2_graph2 / 22.4 # in moles
+number_of_moles_of_O2 = Volume_of_H2_graph2 / 22.4 # in moles
 number_of_moles_of_gaz = number_of_moles_of_H2 + number_of_moles_of_O2
 
 # 3) Energy of reaction
@@ -91,9 +93,9 @@ current_experience3 = np.array([1.0, 0.75, 0.5, 0.25]) # in amperes
 Voltage_experience3 = np.array([0.0, 0.0, 0.0, 0.0])
 
 
-#############################
-### Experience 4 Data (V) ###
-#############################
+#############################################
+### Experience 4 Data (Voltage variation) ###
+#############################################
 
 # Constant parameters :
 pH_experience4 = 14
@@ -107,8 +109,8 @@ Voltage_experience4 = np.array([30, 20, 10, 5]) # in volts
 ### Volume Evolution of H2 and O2 Plot ####
 ###########################################
 
-plt.plot(time_graph1, Volume_of_H2, label='H2')
-plt.plot(time_graph1, Volume_of_O2, label='O2')
+plt.plot(time_graph1, Volume_of_H2_graph1, label='H2')
+plt.plot(time_graph1, Volume_of_O2_graph1, label='O2')
 
 plt.xlabel('Time (s)')
 plt.ylabel('Volume (m\u00B3)')
