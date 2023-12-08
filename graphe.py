@@ -1,6 +1,31 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
+""""
+TODO
+for the volume of evolution of the gaz make one graph 
+but add one line per variation of the parameter studied
+make one line of color for each variation of the parameter studied
+
+for the faradic efficiency and energy efficiency make one graph 
+check if the faradic efficiency and energy efficiency are the same for h2 and o2
+or if they are different or if this is one global for the redox
+same thing here make one line of color for each variation of the parameter studied
+
+have one graph for the evolution of the volatage in function of the studied parameter 
+so here we have 4 graphs and we will just use one but we dont know yet wich one 
+
+plot the 3 graphs in the same view for each experience
+
+so  the structure if more like
+Experience i
+    - Volume evolution of H2 and O2
+    - Faradic Efficiency
+    - Energy Efficiency
+    - Voltage evolution in function of distance
+"""
+
+
 
 ##############################
 ####### Volume Evolution #######
