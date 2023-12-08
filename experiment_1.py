@@ -54,7 +54,7 @@ faradic_efficiency_distance_19 = np.zeros(length_distance_19)
 theorical_speed_of_production_of_H2_distance_19 = np.zeros(length_distance_19)
 
 for i in range(length_distance_19):
-    faradic_efficiency_distance_19[i] = (speed_of_production_of_O2_distance_19 / theorical_speed_of_production_of_H2_distance_19) * 100
+    faradic_efficiency_distance_19[i] = (speed_of_production_of_H2_distance_19 / theorical_speed_of_production_of_H2_distance_19) * 100
 
 # Data for the Energy Efficiency :
 
@@ -123,7 +123,7 @@ faradic_efficiency_distance_15 = np.zeros(length_distance_15)
 theorical_speed_of_production_of_H2_distance_15 = np.zeros(length_distance_15)
 
 for i in range(length_distance_15):
-    faradic_efficiency_distance_15[i] = (speed_of_production_of_O2_distance_15 / theorical_speed_of_production_of_H2_distance_15) * 100
+    faradic_efficiency_distance_15[i] = (speed_of_production_of_H2_distance_15 / theorical_speed_of_production_of_H2_distance_15) * 100
 
 # Data for the Energy Efficiency for d = 15 cm :
 
@@ -193,7 +193,7 @@ faradic_efficiency_distance_11 = np.zeros(length_distance_11)
 theorical_speed_of_production_of_H2_distance_11 = np.zeros(length_distance_11)
 
 for i in range(length_distance_11):
-    faradic_efficiency_distance_11[i] = (speed_of_production_of_O2_distance_11 / theorical_speed_of_production_of_H2_distance_11) * 100
+    faradic_efficiency_distance_11[i] = (speed_of_production_of_H2_distance_11 / theorical_speed_of_production_of_H2_distance_11) * 100
 
 # Data for the Energy Efficiency for d = 11 cm :
 
@@ -263,7 +263,7 @@ faradic_efficiency_distance_7 = np.zeros(length_distance_7)
 theorical_speed_of_production_of_H2_distance_7 = np.zeros(length_distance_7)
 
 for i in range(length_distance_7):
-    faradic_efficiency_distance_7[i] = (speed_of_production_of_O2_distance_7 / theorical_speed_of_production_of_H2_distance_7) * 100
+    faradic_efficiency_distance_7[i] = (speed_of_production_of_H2_distance_7 / theorical_speed_of_production_of_H2_distance_7) * 100
 
 # Data for the Energy Efficiency for d = 7 cm :
 
