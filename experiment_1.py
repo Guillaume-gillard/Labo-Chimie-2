@@ -36,8 +36,8 @@ volume_of_H2_distance_19 = np.zeros(length_distance_19)
 volume_of_O2_distance_19 = np.zeros(length_distance_19)
 speed_of_production_of_H2_distance_19 = np.zeros(length_distance_19)
 speed_of_production_of_O2_distance_19 = np.zeros(length_distance_19)
-count = 0
 
+count = 0
 for key in measurements_distance_19:
     volume_of_H2_distance_19[count] = measurements_distance_19[key][0]
     volume_of_O2_distance_19[count] = measurements_distance_19[key][1]
@@ -51,10 +51,10 @@ for i in range(length_distance_19):
 # Data for the Faradical Efficiency :
 # Calculating with the speed of production of H2 :
 faradic_efficiency_distance_19 = np.zeros(length_distance_19)
-theorical_speed_of_production_of_O2_distance_19 = np.zeros(length_distance_19)
+theorical_speed_of_production_of_H2_distance_19 = np.zeros(length_distance_19)
 
 for i in range(length_distance_19):
-    faradic_efficiency_distance_19[i] = (speed_of_production_of_O2_distance_19 / theorical_speed_of_production_of_O2_distance_19) * 100
+    faradic_efficiency_distance_19[i] = (speed_of_production_of_O2_distance_19 / theorical_speed_of_production_of_H2_distance_19) * 100
 
 # Data for the Energy Efficiency :
 
@@ -120,10 +120,10 @@ for i in range(length_distance_15):
 # Data for the Faradical Efficiency for d = 15 cm :
 # Calculating with the speed of production of H2 :
 faradic_efficiency_distance_15 = np.zeros(length_distance_15)
-theorical_speed_of_production_of_O2_distance_15 = np.zeros(length_distance_15)
+theorical_speed_of_production_of_H2_distance_15 = np.zeros(length_distance_15)
 
 for i in range(length_distance_15):
-    faradic_efficiency_distance_15[i] = (speed_of_production_of_O2_distance_15 / theorical_speed_of_production_of_O2_distance_15) * 100
+    faradic_efficiency_distance_15[i] = (speed_of_production_of_O2_distance_15 / theorical_speed_of_production_of_H2_distance_15) * 100
 
 # Data for the Energy Efficiency for d = 15 cm :
 
@@ -190,10 +190,10 @@ for i in range(length_distance_11):
 # Data for the Faradical Efficiency for d = 11 cm :
 # Calculating with the speed of production of H2 :
 faradic_efficiency_distance_11 = np.zeros(length_distance_11)
-theorical_speed_of_production_of_O2_distance_11 = np.zeros(length_distance_11)
+theorical_speed_of_production_of_H2_distance_11 = np.zeros(length_distance_11)
 
 for i in range(length_distance_11):
-    faradic_efficiency_distance_11[i] = (speed_of_production_of_O2_distance_11 / theorical_speed_of_production_of_O2_distance_11) * 100
+    faradic_efficiency_distance_11[i] = (speed_of_production_of_O2_distance_11 / theorical_speed_of_production_of_H2_distance_11) * 100
 
 # Data for the Energy Efficiency for d = 11 cm :
 
@@ -260,10 +260,10 @@ for i in range(length_distance_7):
 # Data for the Faradical Efficiency for d = 7 cm :
 # Calculating with the speed of production of H2 :
 faradic_efficiency_distance_7 = np.zeros(length_distance_7)
-theorical_speed_of_production_of_O2_distance_7 = np.zeros(length_distance_7)
+theorical_speed_of_production_of_H2_distance_7 = np.zeros(length_distance_7)
 
 for i in range(length_distance_7):
-    faradic_efficiency_distance_7[i] = (speed_of_production_of_O2_distance_7 / theorical_speed_of_production_of_O2_distance_7) * 100
+    faradic_efficiency_distance_7[i] = (speed_of_production_of_O2_distance_7 / theorical_speed_of_production_of_H2_distance_7) * 100
 
 # Data for the Energy Efficiency for d = 7 cm :
 
@@ -302,10 +302,6 @@ for i in range(length_distance_7):
 #############################################
 ########## Plotting the results #############
 #############################################
-
-
-
-
 
 ####################################
 ### Volume Evolution of H2 Plot ####
