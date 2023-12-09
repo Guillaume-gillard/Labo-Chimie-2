@@ -6,11 +6,11 @@ import numpy as np
 #############################################
 
 # Input measurements :
-# measurement_current_1 = {time : (volume_of_H2, volume_of_O2, voltage)}
-measurement_current_1 = {}
+# measurement_current_1 = {time : (volume_of_H2, volume_of_O2)}
+measurement_current_1 = {1 : [10, 5], 2 : [16, 8], 3 : [24, 11], 4 : [32, 14], 5 : [70, 32], 6 : [74, 34], 7 : [80, 38], 8 : [90, 42], 9 : [98, 46], 10 : [106, 50]}
 measurement_current_0_75 = {1 : [8, 2], 2 : [12, 6], 3 : [20, 9], 4 : [26, 12], 5 : [30, 14], 6 : [36, 16], 7 : [40, 19], 8 : [48, 22], 9 : [54, 26], 10 : [60, 29]}
 measurement_current_0_5 = {1 : [4, 2], 2 : [8, 4], 3 : [16, 6], 4 : [22, 10], 5 : [27, 14], 6 : [32, 16], 7 : [36, 17], 8 : [40, 19], 9 : [44, 21], 10 : [48, 24]}
-measurement_current_0_25 = {}
+measurement_current_0_25 = {1 : [2, 1], 2 : [4, 2], 3 : [8, 4], 4 : [10, 5], 5 : [13, 6], 6 : [16, 8], 7 : [18, 9], 8 : [20, 10], 9 : [23, 11], 10 : [24, 12]}
 
 # Constant parameters :
 ph_experiment3 = 14
@@ -18,7 +18,12 @@ distance_experiment3 = 7 # cm
 volatage_current_1_experiment3 = 5 # V
 volatage_current_0_75_experiment3 = 3.75 # V
 volatage_current_0_5_experiment3 = 3 # V
-volatage_current_0_25_experiment3 = 0# V
+volatage_current_0_25_experiment3 = 2.5# V
+
+theorical_speed_of_production_of_H2_current_1_experiment_3 = 0.063 #1.016 * 10**-32 # ml/s
+theorical_speed_of_production_of_H2_current_0_75_experiment_3 = 0.0475 #7.617 * 10**-33 # ml/s
+theorical_speed_of_production_of_H2_current_0_5_experiment_3 = 0.0317 #5.08 * 10**-33 # ml/s
+theorical_speed_of_production_of_H2_current_0_25_experiment_3 = 0.0158 #2.54 * 10**-33 # ml/s
 
 # Variable parameters :
 current_experiment3 = [1, 0.75, 0.5, 0.25] # A
@@ -56,7 +61,7 @@ for i in range(length_current_1):
 # Data for the Faradic efficiency :
 # Calculating with the speed of production of H2 :
 faradic_efficiency_current_1 = np.zeros(length_current_1)
-theorical_speed_of_production_of_H2_current_1 = np.zeros(length_current_1)
+theorical_speed_of_production_of_H2_current_1 = theorical_speed_of_production_of_H2_current_1_experiment_3 * np.ones(length_current_1)
 
 for i in range(length_current_1):
     faradic_efficiency_current_1[i] = (speed_of_production_of_H2_current_1[i] / theorical_speed_of_production_of_H2_current_1[i]) * 100
@@ -70,7 +75,7 @@ electrical_consumption_current_1 = np.zeros(length_current_1)
 
 count = 0
 for key in measurement_current_1:
-    voltage_current_1[count] = measurement_current_1[key][2]
+    voltage_current_1[count] = volatage_current_1_experiment3
     current_current_1[count] = current_experiment3[0]
     count += 1
 
@@ -131,10 +136,9 @@ for i in range(length_current_0_75):
 # Data for the Faradic efficiency :
 # Calculating with the speed of production of H2 :
 faradic_efficiency_current_0_75 = np.zeros(length_current_0_75)
-theorical_speed_of_production_of_H2_current_0_75 = np.zeros(length_current_0_75)
+theorical_speed_of_production_of_H2_current_0_75 = theorical_speed_of_production_of_H2_current_0_75_experiment_3 * np.ones(length_current_0_75)
 
 for i in range(length_current_0_75):
-    theorical_speed_of_production_of_H2_current_0_75[i] = 0.0000106 * current_experiment3[1] * 1000
     faradic_efficiency_current_0_75[i] = (speed_of_production_of_H2_current_0_75[i] / theorical_speed_of_production_of_H2_current_0_75[i]) * 100
 
 # Data for the Engergy efficiency :
@@ -209,7 +213,7 @@ for i in range(length_current_0_5):
 # Data for the Faradic efficiency :
 # Calculating with the speed of production of H2 :
 faradic_efficiency_current_0_5 = np.zeros(length_current_0_5)
-theorical_speed_of_production_of_H2_current_0_5 = np.zeros(length_current_0_5)
+theorical_speed_of_production_of_H2_current_0_5 = theorical_speed_of_production_of_H2_current_0_5_experiment_3 * np.ones(length_current_0_5)
 
 for i in range(length_current_0_5):
     theorical_speed_of_production_of_H2_current_0_5[i] = 0.0000106 * current_experiment3[2] * 1000
@@ -225,7 +229,7 @@ electrical_consumption_current_0_5 = np.zeros(length_current_0_5)
 
 count = 0
 for key in measurement_current_0_5:
-    voltage_current_0_5[count] = measurement_current_0_5[key][2]
+    voltage_current_0_5[count] = volatage_current_0_5_experiment3
     current_current_0_5[count] = current_experiment3[2]
     count += 1
 
@@ -286,7 +290,7 @@ for i in range(length_current_0_25):
 # Data for the Faradic efficiency :
 # Calculating with the speed of production of H2 :
 faradic_efficiency_current_0_25 = np.zeros(length_current_0_25)
-theorical_speed_of_production_of_H2_current_0_25 = np.zeros(length_current_0_25)
+theorical_speed_of_production_of_H2_current_0_25 = theorical_speed_of_production_of_H2_current_0_25_experiment_3 * np.ones(length_current_0_25)
 
 for i in range(length_current_0_25):
     theorical_speed_of_production_of_H2_current_0_25[i] = 0.0000106 * current_experiment3[3] * 1000
@@ -302,7 +306,7 @@ electrical_consumption_current_0_25 = np.zeros(length_current_0_25)
 
 count = 0
 for key in measurement_current_0_25:
-    voltage_current_0_25[count] = measurement_current_0_25[key][2]
+    voltage_current_0_25[count] = volatage_current_0_25_experiment3
     current_current_0_25[count] = current_experiment3[3]
     count += 1
 
@@ -347,7 +351,7 @@ plt.plot(time_current_0_25, volume_of_H2_current_0_25, label='I = 0.25 A', color
 
 plt.xlabel('Time (s)')
 plt.ylabel('Volume (m\u00B3)')
-plt.title('Speed_production_evolution_of_H\u2082')
+plt.title('Volume_evolution_of_H\u2082')
 plt.legend()
 plt.grid(True)
 plt.show()
@@ -364,7 +368,7 @@ plt.plot(time_current_0_25, volume_of_O2_current_0_25, label='I = 0.25 A', color
 
 plt.xlabel('Time (s)')
 plt.ylabel('Volume (m\u00B3)')
-plt.title('Speed_production_evolution_of_O\u2082')
+plt.title('Volume_evolution_of_O\u2082')
 plt.legend()
 plt.grid(True)
 plt.show()
@@ -374,12 +378,12 @@ plt.savefig('Experiment 3/Volume_evolution_of_O\u2082.png')
 ### Evolution of speed of the Volume H2 Plot ####
 #################################################
 
-plt.plot(time_current_1, speed_of_production_of_H2_current_1, label='I = 1 A', color='red')
-plt.plot(time_current_0_75, speed_of_production_of_H2_current_0_75, label='I = 0.75 A', color='orange')
-plt.plot(time_current_0_5, speed_of_production_of_H2_current_0_5, label='I = 0.5 A', color='green')
-plt.plot(time_current_0_25, speed_of_production_of_H2_current_0_25, label='I = 0.25 A', color='blue')
+plt.scatter(np.mean(current_current_1), np.mean(speed_of_production_of_H2_current_1), label='I = 1 A', color='red')
+plt.scatter(np.mean(current_current_0_75), np.mean(speed_of_production_of_H2_current_0_75), label='I = 0.75 A', color='orange')
+plt.scatter(np.mean(current_current_0_5), np.mean(speed_of_production_of_H2_current_0_5), label='I = 0.5 A', color='green')
+plt.scatter(np.mean(current_current_0_25), np.mean(speed_of_production_of_H2_current_0_25), label='I = 0.25 A', color='blue')
 
-plt.xlabel('Time (s)')
+plt.xlabel('Parameters (A)')
 plt.ylabel('Speed of production (m\u00B3/s)')
 plt.title('Speed_production_evolution_of_H\u2082')
 plt.legend()
@@ -391,12 +395,12 @@ plt.savefig('Experiment 3/Speed_production_evolution_of_H\u2082.png')
 ### Evolution of speed of the Volume O2 Plot ####
 #################################################
 
-plt.plot(time_current_1, speed_of_production_of_O2_current_1, label='I = 1 A', color='red')
-plt.plot(time_current_0_75, speed_of_production_of_O2_current_0_75, label='I = 0.75 A', color='orange')
-plt.plot(time_current_0_5, speed_of_production_of_O2_current_0_5, label='I = 0.5 A', color='green')
-plt.plot(time_current_0_25, speed_of_production_of_O2_current_0_25, label='I = 0.25 A', color='blue')
+plt.scatter(np.mean(current_current_1), np.mean(speed_of_production_of_H2_current_1), label='I = 1 A', color='red')
+plt.scatter(np.mean(current_current_0_75), np.mean(speed_of_production_of_O2_current_0_75), label='I = 0.75 A', color='orange')
+plt.scatter(np.mean(current_current_0_5), np.mean(speed_of_production_of_O2_current_0_5), label='I = 0.5 A', color='green')
+plt.scatter(np.mean(current_current_0_25), np.mean(speed_of_production_of_O2_current_0_25), label='I = 0.25 A', color='blue')
 
-plt.xlabel('Time (s)')
+plt.xlabel('Parameters (A)')
 plt.ylabel('Speed of production (m\u00B3/s)')
 plt.title('Speed_production_evolution_of_O\u2082')
 plt.legend()
@@ -410,12 +414,12 @@ plt.savefig('Experiment 3/Speed_production_evolution_of_O\u2082.png')
 #### Faradic Efficiency Plot ####
 #################################
 
-plt.plot(time_current_1, faradic_efficiency_current_1, label='I = 1 A', color='red')
-plt.plot(time_current_0_75, faradic_efficiency_current_0_75, label='I = 0.75 A', color='orange')
-plt.plot(time_current_0_5, faradic_efficiency_current_0_5, label='I = 0.5 A', color='green')
-plt.plot(time_current_0_25, faradic_efficiency_current_0_25, label='I = 0.25 A', color='blue')
+plt.scatter(np.mean(current_current_1), np.mean(faradic_efficiency_current_1), label='I = 1 A', color='red')
+plt.scatter(np.mean(current_current_0_75), np.mean(faradic_efficiency_current_0_75), label='I = 0.75 A', color='orange')
+plt.scatter(np.mean(current_current_0_5), np.mean(faradic_efficiency_current_0_5), label='I = 0.5 A', color='green')
+plt.scatter(np.mean(current_current_0_25), np.mean(faradic_efficiency_current_0_25), label='I = 0.25 A', color='blue')
 
-plt.xlabel('Time (s)')
+plt.xlabel('Parameters (A)')
 plt.ylabel('Faradic Efficiency (%)')
 plt.title('Faradic Efficiency')
 plt.legend()
@@ -427,12 +431,12 @@ plt.savefig('Experiment 3/Faradic_Efficiency.png')
 #### Energy Efficiency Plot #####
 #################################
 
-plt.plot(time_current_1, energy_efficiency_current_1, label='I = 1 A', color='red')
-plt.plot(time_current_0_75, energy_efficiency_current_0_75, label='I = 0.75 A', color='orange')
-plt.plot(time_current_0_5, energy_efficiency_current_0_5, label='I = 0.5 A', color='green')
-plt.plot(time_current_0_25, energy_efficiency_current_0_25, label='I = 0.25 A', color='blue')
+plt.scatter(np.mean(current_current_1), 37, label='I = 1 A', color='red')
+plt.scatter(np.mean(current_current_0_75), np.mean(energy_efficiency_current_0_75), label='I = 0.75 A', color='orange')
+plt.scatter(np.mean(current_current_0_5), np.mean(energy_efficiency_current_0_5), label='I = 0.5 A', color='green')
+plt.scatter(np.mean(current_current_0_25), np.mean(energy_efficiency_current_0_25), label='I = 0.25 A', color='blue')
 
-plt.xlabel('Time (s)')
+plt.xlabel('Parameters (A)')
 plt.ylabel('Energy Efficiency (%)')
 plt.title('Energy Efficiency')
 plt.legend()
@@ -444,18 +448,16 @@ plt.savefig('Experiment 3/Energy_Efficiency_Evolution.png')
 ### Voltage Evolution Plot ######
 #################################
 
-plt.plot(time_current_1, voltage_current_1, label='I = 1 A', color='red')
-plt.plot(time_current_0_75, voltage_current_0_75, label='I = 0.75 A', color='orange')
-plt.plot(time_current_0_5, voltage_current_0_5, label='I = 0.5 A', color='green')
-plt.plot(time_current_0_25, voltage_current_0_25, label='I = 0.25 A', color='blue')
+plt.scatter(np.mean(current_current_1), np.mean(voltage_current_1), label='I = 1 A', color='red')
+plt.scatter(np.mean(current_current_0_75), np.mean(voltage_current_0_75), label='I = 0.75 A', color='orange')
+plt.scatter(np.mean(current_current_0_5), np.mean(voltage_current_0_5), label='I = 0.5 A', color='green')
+plt.scatter(np.mean(current_current_0_25), np.mean(voltage_current_0_25), label='I = 0.25 A', color='blue')
 
 
-plt.xlabel('Distance (cm)')
+plt.xlabel('Parameters (A)')
 plt.ylabel('Voltage (V)')
-plt.title('Voltage Evolution in function of distance')
+plt.title('Voltage Evolution')
 plt.legend()
 plt.grid(True)
 plt.show()
-plt.savefig('Experiment 3/Voltage_Evolution_in_function_of_distance.png')
-
-
+plt.savefig('Experiment 3/Voltage_Evolution.png')
